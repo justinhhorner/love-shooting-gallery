@@ -3,8 +3,8 @@ HUD = {}
 function HUD:load()
    self.timer = 0
    self.margin = 20
-   self.small_font = love.graphics.newFont(24)
-   self.large_font = love.graphics.newFont(40)
+   self.small_font = love.graphics.newFont('fonts/retro_gaming.ttf', 24)
+   self.large_font = love.graphics.newFont('fonts/retro_gaming.ttf', 40)
 end
 
 function HUD:draw()
