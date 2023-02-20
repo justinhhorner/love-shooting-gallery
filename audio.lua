@@ -1,7 +1,7 @@
 Audio = {}
 
 function Audio:load()
-    self.music = love.audio.newSource('audio/game_loop.wav', 'stream')
+    self.music = love.audio.newSource('audio/music.wav', 'stream')
     self.hit_sfx = {
        love.audio.newSource('audio/hit_01.ogg', 'static'),
        love.audio.newSource('audio/hit_02.ogg', 'static'),
