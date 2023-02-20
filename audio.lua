@@ -19,5 +19,5 @@ function Audio:update()
 end
 
 function Audio:play_target_hit()
-    love.audio.play(self.hit_sfx[math.random(1, 3)])
+    love.audio.play(self.hit_sfx[math.random(3)])
 end

@@ -17,17 +17,20 @@ function love.load()
     Audio:load()
 end
 
+local function update_timer(value)
+    timer = value
+    HUD.timer = timer
+end
+
 function love.update(dt)
     Audio:update()
 
     if timer > 0 then
-      timer = timer - dt
-      HUD.timer = timer
+      update_timer(timer - dt)
     end
 
     if timer < 0 then
-        timer = 0
-        HUD.timer = timer
+        update_timer(0)
         Score.score = 0
         game_state = 1
     end
@@ -48,8 +51,7 @@ end
 
 function love.mousepressed(x, y, button)
     if game_state == 1 then
-        timer = 10
-        HUD.timer = timer
+        update_timer(10)
         game_state = 2
         return
     end
@@ -63,8 +65,7 @@ function love.mousepressed(x, y, button)
         Target.x, Target.y = Target:get_rand_pos()
 
         if button == 2 then
-            timer = timer - 1
-            HUD.timer = timer
+            update_timer(timer - 1)
         end
     else
         if Score.score > 0 then
