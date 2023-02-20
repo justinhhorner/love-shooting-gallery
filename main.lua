@@ -24,6 +24,9 @@ end
 
 function love.update(dt)
     Audio:update()
+    if game_state == 2 then
+        Target:update(dt)
+    end
 
     if timer > 0 then
       update_timer(timer - dt)
@@ -56,13 +59,10 @@ function love.mousepressed(x, y, button)
         return
     end
 
-    local distance = math.sqrt((x - Target.x)^2 + (y - Target.y)^2)
-    local is_within_circle = distance < Target.radius or distance == Target.radius
-
-    if is_within_circle then
+    if Target:is_mouse_within(x, y) then
         Score:add(button)
         Audio:play_target_hit()
-        Target.x, Target.y = Target:get_rand_pos()
+        Target:reset()
 
         if button == 2 then
             update_timer(timer - 1)
